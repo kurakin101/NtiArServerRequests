@@ -1,5 +1,6 @@
 package com.sobol.testserverrequests.server.requests
 
+import com.sobol.testserverrequests.server.Constants
 import com.sobol.testserverrequests.server.api.API
 import com.sobol.testserverrequests.server.model.bodies.RegistrationBody
 import com.sobol.testserverrequests.server.model.responses.RegistrationResponse
@@ -16,7 +17,7 @@ class LoginRequest(
 
     fun execute() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.arstand-lab.ru/api/0/")
+            .baseUrl(Constants.serverUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
