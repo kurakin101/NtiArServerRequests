@@ -4,5 +4,6 @@ class FiguresResponse (
     val x: Int,
     val y: Int,
     val angel: Int,
-    val modifier: Int
+    val modifier: Int,
+    val code: Int
 )
