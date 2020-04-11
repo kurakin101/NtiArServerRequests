@@ -30,13 +30,13 @@ class GetFiguresRequest(
 
             override fun onResponse(call: Call<FiguresResponse>, response: Response<FiguresResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
+                    println("SUCCESS getFigures")
                     println(response.body()?.x)
                     println(response.body()?.y)
                     println(response.body()?.angel)
                     println(response.body()?.modifier)
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS getFigures")
                 }
             }
         })

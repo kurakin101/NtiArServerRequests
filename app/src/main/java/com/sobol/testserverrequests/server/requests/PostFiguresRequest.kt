@@ -2,9 +2,11 @@ package com.sobol.testserverrequests.server.requests
 
 import com.sobol.testserverrequests.server.Constants
 import com.sobol.testserverrequests.server.api.API
+import com.sobol.testserverrequests.server.model.Figure
 import com.sobol.testserverrequests.server.model.bodies.FiguresBody
 import com.sobol.testserverrequests.server.model.bodies.StatusBody
 import com.sobol.testserverrequests.server.model.responses.FiguresResponse
+import com.sobol.testserverrequests.server.model.responses.PostFiguresResponse
 import com.sobol.testserverrequests.server.model.responses.StatusResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,10 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PostFiguresRequest(
     private val sender: String,
-    private val figures: ArrayList<Int>,
-    private val x: Int,
-    private val y: Int,
-    private val angle: Int
+    private val figures: Array<Figure>
 ) {
 
     fun execute() {
@@ -30,22 +29,19 @@ class PostFiguresRequest(
 
         val body = FiguresBody(
             sender,
-            figures,
-            x,y,
-            angle
+            figures
         )
         val call = api.postFigures(body)
-        call.enqueue(object : Callback<FiguresResponse> {
-            override fun onFailure(call: Call<FiguresResponse>, t: Throwable) {
+        call.enqueue(object : Callback<PostFiguresResponse> {
+            override fun onFailure(call: Call<PostFiguresResponse>, t: Throwable) {
                 println("FAIL RESPONCE == ${t.message}")
             }
 
-            override fun onResponse(call: Call<FiguresResponse>, response: Response<FiguresResponse>) {
+            override fun onResponse(call: Call<PostFiguresResponse>, response: Response<PostFiguresResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
-                    println(response.body()?.code)
+                    println("SUCCESS PostFigures")
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS PostFigures")
                 }
             }
         })

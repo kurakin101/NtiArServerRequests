@@ -37,10 +37,10 @@ class PostStandBallRequests(
 
             override fun onResponse(call: Call<StandBallResponse>, response: Response<StandBallResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
+                    println("SUCCESS PostStandBall")
                     println(response.body()?.code)
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS PostStandBall")
                 }
             }
         })

@@ -3,8 +3,10 @@ package com.sobol.testserverrequests.server.requests
 import com.sobol.testserverrequests.server.Constants
 import com.sobol.testserverrequests.server.Constants.serverUrl
 import com.sobol.testserverrequests.server.api.API
+import com.sobol.testserverrequests.server.model.Position
 import com.sobol.testserverrequests.server.model.bodies.RegistrationBody
 import com.sobol.testserverrequests.server.model.bodies.StatusBody
+import com.sobol.testserverrequests.server.model.responses.PostStatusResponse
 import com.sobol.testserverrequests.server.model.responses.RegistrationResponse
 import com.sobol.testserverrequests.server.model.responses.StatusResponse
 import okhttp3.MediaType
@@ -20,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class PostStatusRequests(
     private val action: String,
-    private val positions: ArrayList<Int>
+    private val positions: Array<Position>
 ) {
 
     fun execute() {
@@ -36,17 +38,16 @@ class PostStatusRequests(
             positions
         )
         val call = api.postData(body)
-        call.enqueue(object : Callback<StatusResponse> {
-            override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
+        call.enqueue(object : Callback<PostStatusResponse> {
+            override fun onFailure(call: Call<PostStatusResponse>, t: Throwable) {
                 println("FAIL RESPONCE == ${t.message}")
             }
 
-            override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
+            override fun onResponse(call: Call<PostStatusResponse>, response: Response<PostStatusResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
-                    println(response.body()?.code)
+                    println("SUCCESS PostStatus")
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS PostStatus")
                 }
             }
         })

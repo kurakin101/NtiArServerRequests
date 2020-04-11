@@ -33,11 +33,11 @@ class GetBallRequest(
 
             override fun onResponse(call: Call<BallResponse>, response: Response<BallResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
+                    println("SUCCESS Get ball")
                     println(response.body()?.pos)
                     println(response.body()?.ang)
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS Get ball")
                 }
             }
         })

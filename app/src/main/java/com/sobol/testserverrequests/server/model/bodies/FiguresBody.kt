@@ -1,9 +1,8 @@
 package com.sobol.testserverrequests.server.model.bodies
 
+import com.sobol.testserverrequests.server.model.Figure
+
 class FiguresBody (
     val sender: String,
-    val figures:ArrayList<Int>,
-    val x:  Int,
-    val y: Int,
-    val angle: Int
+    val figures: Array<Figure>
 )

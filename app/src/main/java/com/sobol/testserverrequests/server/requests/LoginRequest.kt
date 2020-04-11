@@ -35,10 +35,10 @@ class LoginRequest(
 
             override fun onResponse(call: Call<RegistrationResponse>, response: Response<RegistrationResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
+                    println("SUCCESS Login")
                     println(response.body()?.key)
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS Login")
                 }
             }
         })

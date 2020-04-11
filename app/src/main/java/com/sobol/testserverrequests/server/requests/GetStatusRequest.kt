@@ -32,13 +32,13 @@ class GetStatusRequest(
 
             override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
                 if (response.isSuccessful) {
-                    println("SUCCESS SUCECESS")
+                    println("SUCCESS getStatus")
                     println(response.body()?.status)
                     println(response.body()?.status_message)
                     println(response.body()?.current_team)
                     println(response.body()?.remaining_time)
                 } else {
-                    println("NO SUCCESS")
+                    println("NO SUCCESS getStatus")
                 }
             }
         })
